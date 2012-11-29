@@ -75,7 +75,7 @@ class FreeMyTube(object):
                 print ":: %6.2f kbits/s :: %3d%% :: %s (%s)\r" % (scaled, ratio, self.pagetitle, self.mediacontenttype),
                 sys.stdout.flush()
 
-        self.average_bandwidth = sum(measurements) / len(measurements)
+        self.average_bandwidth = sum(self.measurements) / len(self.measurements)
 
         print "\nAverage bandwidth: %6.2f kbits/s" % self.average_bandwidth
 
