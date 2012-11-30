@@ -61,18 +61,20 @@ class FreeMyTube(object):
                 if not self.elapsed_time:
                     continue
 
-                if (cur_time-last_update) < 5:
+                if (cur_time - last_update) < 5:
                     continue
                 last_update = cur_time
 
                 speed = self.bytes / self.elapsed_time
                 power = int(math.log(speed, 1000))
-                scaled = speed / 1000.**power
+                scaled = speed / 1000. ** power
 
                 self.measurements.append(scaled)
-                ratio = int((float(self.bytes)/float(self.size))*100.)
+                ratio = int((float(self.bytes) / float(self.size)) * 100.)
 
-                print ":: %6.2f kbits/s :: %3d%% :: %s (%s)\r" % (scaled, ratio, self.pagetitle, self.mediacontenttype),
+                print ":: %6.2f kbits/s :: %3d%% :: %s (%s)\r" % (
+                    scaled, ratio, self.pagetitle, self.mediacontenttype),
+
                 sys.stdout.flush()
 
         self.average_bandwidth = sum(self.measurements) / len(self.measurements)
@@ -88,7 +90,8 @@ class FreeMyTube(object):
 def main(argv=None):
 
     # CLI
-    parser = argparse.ArgumentParser(description='Evaluate your YouTube bandwidth')
+    parser = argparse.ArgumentParser(
+        description='Evaluate your YouTube bandwidth')
     args = parser.parse_args()
 
     fmt = FreeMyTube()
