@@ -44,7 +44,7 @@ class FreeMyTube(object):
     def eval(self):
         """Download YouTube video and evaluate the average bandwidth
         """
-        r = requests.get(self.mediaurl, prefetch=False)
+        r = requests.get(self.mediaurl, stream=True)
         self.size = int(r.headers['Content-Length'].strip())
 
         self.bytes = 0
